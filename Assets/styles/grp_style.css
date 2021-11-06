@@ -1,0 +1,12 @@
+.table_row
+{
+    width:50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+b
+{
+    color:var(--green);
+}

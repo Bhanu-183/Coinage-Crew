@@ -34,18 +34,8 @@
         <h1 class="display-3 text-center">Dashboard</h1>
         <p class="text-center">Access all your groups from here</p>
     </div>
-    <div class="row mt-4">
-        <a href="#" class="card p-2">
-            <div class="card-body">
-                <h2 class="card-title">Amigoss</h2>
-                <h5 class="card-subtitle mb-2 text-muted">Food Bill Split</h5>
-                <p class="card-text">Bhanu created this group</p>
-            </div>
-        </a>
-    </div>
-
-    <div class="row mt-4">
-        <a href="#" class="card p-2">
+    <div class="row mt-4" data-aos="fade-right">
+        <a href="./group.html" class="card p-2">
             <div class="card-body">
                 <h2 class="card-title">Gryffindor</h2>
                 <h5 class="card-subtitle mb-2 text-muted">Travel Bill Split</h5>
@@ -53,7 +43,15 @@
             </div>
         </a>
     </div>
-
+    <div class="row mt-4" data-aos="fade-left">
+        <a href="./group.html" class="card p-2">
+            <div class="card-body">
+                <h2 class="card-title">Amigos</h2>
+                <h5 class="card-subtitle mb-2 text-muted">Food Bill Split</h5>
+                <p class="card-text">Bhanu created this group</p>
+            </div>
+        </a>
+    </div>
 
     <div class="add">
         <a href="http:#" class="btn add_btn p-4">
@@ -63,3 +61,8 @@
 </body>
 
 </html>
+<script>
+    AOS.init({
+        duration: 1600,
+    });
+</script>
