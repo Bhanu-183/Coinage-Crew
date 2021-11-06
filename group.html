@@ -30,7 +30,7 @@
     <title>Coinage Crew | Group</title>
 </head>
 <div class="container mt-4">
-    <h1 class="display-3 text-center">Gryffindor</h1>
+    <h1 class="display-3 text-center" data-aos="fade-up">Gryffindor</h1>
     <p class="text-center">Harry created this group</p>
     <div class="row mt-4 table_row">
         <table class="table">
@@ -45,11 +45,37 @@
                 </tr>
                 <tr>
                     <td><b>Split Amount</b></td>
-                    <td>400</td>
+                    <td>300</td>
                 </tr>
             </tbody>
         </table>
     </div>
+    <div class="row table_row mt-5 mb-5">
+        <h3 class="text-center"><u>Group Members</u></h3>
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Harry Potter
+                <a href="#" class="badge badge-primary badge-pill">IOU</a>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Hermoine Granger
+                <a href="#" style="color:white" class="badge badge-warning badge-pill">Remind</a>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Ginny Weasley
+                <a href="#" class="btn pay_btn">PAY</a>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Ronald Weasley
+                <span class="badge badge-success badge-pill">Paid</span>
+            </li>
+        </ul>
+    </div>
 </div>
 
 </html>
+<script>
+    AOS.init({
+        duration: 1600,
+    });
+</script>

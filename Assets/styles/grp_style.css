@@ -10,3 +10,17 @@ b
 {
     color:var(--green);
 }
+
+.pay_btn
+{
+    background-color:rgb(235, 67, 37);
+    color: white;
+    border-radius:4rem;
+    padding: 0.3rem 0.8rem 0.3rem 0.8rem;
+    font-weight: bold;
+}
+
+.pay_btn:hover
+{
+    color: white;
+}
