@@ -1,7 +1,8 @@
 <?php 
-    $id=$_GET['grp_id'];
-    echo "<script>console.log('$id');</script>";
-
+    session_start();
+    include('./db_conn.php');
+    $grp_id=$_GET['grp_id'];
+    $user_id=$_SESSION['user_id'];
 ?>
 <html lang="en">
 
@@ -36,24 +37,38 @@
 </head>
 <div class="container mt-4">
     <div>
+            <a href="./logout.php" class="logout-btn btn">Logout</a>
+        </div>
+    <div>
         <a href="./dashboard.php" class="back-btn btn">Back</a>
     </div>
-    <h1 class="display-4 text-center" data-aos="fade-up"><u>Gryffindor</u></h1>
-    <p class="text-center">Harry created this group</p>
+    <?php 
+        $q="SELECT * FROM `groups`,`users` WHERE `grp_id`='$grp_id' AND user_id=owner";
+        $res=$conn->query($q);
+        $row=$res->fetch_assoc();
+        $grp_name=$row['grp_name'];
+        $owner=$row['name'];
+        $owner_id=$row['owner'];
+        $category=$row['category'];
+        $total=$row['total'];
+        $split=$row['split'];
+    ?>
+    <h1 class="display-4 text-center" data-aos="fade-up"><u><?php echo $grp_name?></u></h1>
+    <p class="text-center"><?php echo $owner?> created this group</p>
     <div class="row mt-4 table_row">
         <table class="table">
             <tbody>
                 <tr>
                     <td><b>Category</b></td>
-                    <td>Travel</td>
+                    <td><?php echo $category?></td>
                 </tr>
                 <tr>
                     <td><b>Total Amount</b></td>
-                    <td>1200</td>
+                    <td><?php echo $total?></td>
                 </tr>
                 <tr>
                     <td><b>Split Amount</b></td>
-                    <td>300</td>
+                    <td><?php echo $split?></td>
                 </tr>
             </tbody>
         </table>
@@ -61,22 +76,44 @@
     <div class="row table_row mt-5 mb-5">
         <h3 class="text-center"><u>Group Members</u></h3>
         <ul class="list-group">
+            
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                Harry Potter
+                <?php echo $owner?>
+                <?php if($user_id!=$owner_id)
+                        {?>
                 <a href="#" class="badge badge-primary badge-pill">IOU</a>
+                <?php }?>
             </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                Hermoine
-                <a href="#" style="color:white" class="badge badge-warning badge-pill">Remind</a>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                Ginny Weasley
-                <a href="#" class="btn pay_btn">PAY</a>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                Ronald Weasley
-                <span class="badge badge-success badge-pill">Paid</span>
-            </li>
+            <?php 
+                $q1="SELECT * FROM `members`,`users` WHERE grp='$grp_id' AND user_id=id";
+                $res1=$conn->query($q1);
+                if($res1->num_rows>0)
+                {
+                    while($row1=$res1->fetch_assoc())
+                    {
+                        $name=$row1['name'];
+                        echo '<li class="list-group-item d-flex justify-content-between align-items-center">
+                                '.$name;
+                        
+                        $id=$row1['user_id'];
+                        if($row1['paid']==1)
+                        {
+                            echo '<span class="badge badge-success badge-pill">Paid</span>
+                            </li>';
+                        }
+                        elseif($user_id==$owner_id)
+                        {
+                            echo '<a href="#" style="color:white" class="badge badge-warning badge-pill">Remind</a>
+                                </li>';
+                        }
+                        elseif($id==$user_id)
+                        {
+                            echo '<a href="#" class="btn pay_btn">PAY</a>
+                            </li>';
+                        }
+                    }
+                }
+            ?>
         </ul>
     </div>
 </div>
