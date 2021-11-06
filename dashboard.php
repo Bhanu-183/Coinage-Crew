@@ -35,7 +35,7 @@
         <p class="text-center">Access all your groups from here</p>
     </div>
     <div class="row mt-4" data-aos="fade-right">
-        <a href="./group.html" class="card p-2">
+        <a href="./group.php" class="card p-2">
             <div class="card-body">
                 <h2 class="card-title">Gryffindor</h2>
                 <h5 class="card-subtitle mb-2 text-muted">Travel Bill Split</h5>
@@ -44,7 +44,7 @@
         </a>
     </div>
     <div class="row mt-4" data-aos="fade-left">
-        <a href="./group.html" class="card p-2">
+        <a href="./group.php" class="card p-2">
             <div class="card-body">
                 <h2 class="card-title">Amigos</h2>
                 <h5 class="card-subtitle mb-2 text-muted">Food Bill Split</h5>

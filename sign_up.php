@@ -1,5 +1,34 @@
-<html lang="en">
+<?php
+    include('./db_conn.php'); 
 
+    if(isset($_POST['submit']))
+    {
+        $name = $_POST['name'];
+        $pass = $_POST['password'];
+        $password = password_hash($pass, PASSWORD_DEFAULT);
+        $email = $_POST['email'];
+        $phno = $_POST['phno'];
+
+        $q="SELECT * FROM users WHERE email='$email'";
+        $res=$conn->query($q);
+        if($res->num_rows>0)
+        {
+            echo "<script>alert('Entered email address already exists!!!');</script>";
+        }
+        else
+        {
+            $q1="INSERT INTO `users` (name,password,email,phno) VALUES('$name','$password','$email','$phno')";
+            $conn->query($q1);
+            ?>
+            <script>
+                alert('Registration Successful');
+                location.replace('./index.php');
+            </script>
+            <?php
+        }
+    }
+?>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -67,7 +96,7 @@
                     </div>
                     <button type="submit" name="submit" class="btn mt-4 submit_btn btn-lg">Sign Up</button>
                 </form>
-                <p class="text-center" style="font-weight:bold">Existing User? <a href="index.html">Sign In</a></p>
+                <p class="text-center" style="font-weight:bold">Existing User? <a href="index.php">Sign In</a></p>
             </div>
         </div>
     </div>

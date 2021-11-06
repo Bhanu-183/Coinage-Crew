@@ -31,7 +31,7 @@
 </head>
 <div class="container mt-4">
     <div>
-        <a href="./dashboard.html" class="back-btn btn">Back</a>
+        <a href="./dashboard.php" class="back-btn btn">Back</a>
     </div>
     <h1 class="display-4 text-center" data-aos="fade-up"><u>Gryffindor</u></h1>
     <p class="text-center">Harry created this group</p>

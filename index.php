@@ -1,3 +1,31 @@
+<?php 
+    include('./db_conn.php'); 
+
+    if(isset($_POST['submit']))
+    {
+        $pass = $_POST['password'];
+        $email = $_POST['email'];
+
+        $sql = "SELECT * FROM `users` WHERE email = '$email'";
+        $res=$conn->query($sql);
+        if($res->num_rows>0)
+        {
+            while($row = $res->fetch_assoc())
+            {
+                if(password_verify($pass,$row['password']))
+                {
+                    $_SESSION['user_id']=$row['id'];
+                    header("location:dashboard.php");
+                }
+                else
+                {
+                    echo "<script>alert('Incorrect email id or password!!!Please try again');</script>";
+                }    
+            }
+        }
+    }
+?>
+
 <html lang="en">
 
 <head>
@@ -49,7 +77,7 @@
                     </div>
                     <button type="submit" name="submit" class="btn mt-4 submit_btn btn-lg">Sign In</button>
                 </form>
-                <p class="text-center" style="font-weight:bold">New User? <a href="sign_up.html">Sign Up</a></p>
+                <p class="text-center" style="font-weight:bold">New User? <a href="sign_up.php">Sign Up</a></p>
             </div>
         </div>
     </div>
