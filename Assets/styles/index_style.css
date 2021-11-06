@@ -56,6 +56,16 @@ label
     font-weight:500;
 }
 
+.back-btn
+{
+    border:2px solid var(--green);
+    color:var(--green);
+}
+.back-btn:hover
+{
+    color:var(--green);
+}
+
 
 @media only screen and (max-width:768px) {
     form
