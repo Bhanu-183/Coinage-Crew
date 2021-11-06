@@ -58,7 +58,7 @@
                 $owner=$row['name'];
                 $date=substr($row['date'],0,10);
                 $grp_id=$row['grp_id'];
-                echo '<div class="row mt-4" data-aos="fade-right">
+                echo '<div class="row mt-4 mb-2" data-aos="fade-right">
                         <a href="./group.php?grp_id='.$grp_id.'" class="card p-2">
                         <div class="card-body">
                             <h2 class="card-title">'.$grp_name.'</h2>
@@ -106,7 +106,7 @@
     
 
     <div class="add">
-        <a href="http:#" class="btn add_btn p-4">
+        <a href="./search_members/index.php" class="btn add_btn p-4">
             <i class="fa fa-plus"></i>
         </a>
     </div>

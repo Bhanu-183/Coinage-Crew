@@ -1,3 +1,43 @@
+<?php 
+    session_start();
+    include('../db_conn.php'); 
+    $user_id=$_SESSION['user_id'];
+
+    if(isset($_POST['submit']))
+    {
+        $values=$_POST['ids'];
+        $arr = explode (",", $values); 
+        unset($arr[count($arr)-1]);
+        if(count($arr)==0)
+        {
+          ?>
+            <script>
+                alert('Group can not be empty!!!');
+                location.replace('./index.php');
+            </script>
+            <?php
+        }
+        $grp_name=$_POST['grp_name'];
+        $category=$_POST['category'];
+        $total=$_POST['total'];
+        $split=$total/(count($arr)+1);
+        
+        $sql="INSERT INTO `groups`(grp_name,owner,category,total,split) VALUES('$grp_name','$user_id','$category','$total','$split')";
+        $conn->query($sql);
+        
+        $q="SELECT * FROM `groups` ORDER BY date DESC LIMIT 1";
+        $res=$conn->query($q);
+        $row=$res->fetch_assoc();
+        $grp_id=$row['grp_id'];
+        foreach($arr as $id)
+        {
+            $sql="INSERT INTO `members`(grp,id) VALUES('$grp_id','$id')";
+            $conn->query($sql);
+            echo $conn->error;
+        }
+
+      }
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -30,15 +70,27 @@
       integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
       crossorigin="anonymous"
     ></script>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./style.css" />
 
     <script type="text/javascript" src="./script.js"></script>
   </head>
   <body>
-      <div class="container">
-           <!-- <h2>Make your group</h2> -->
+      <div class="container mt-5">
+           
+      <h1 class="display-5 text-center" style="color:#1e5128;font-weight:500">CREATE YOUR GROUP</h1>
+      
+        <ul class="list-group" id="selected">
 
-    <input
+        </ul>
+      
+      <input
+      class="mt-3"
       type="text"
       id="myInput"
       onkeyup="myFunction()"
@@ -47,47 +99,26 @@
     />
 
     <ul id="myUL">
-      <li>
-        <a href="#"
-          >Adele <button><i class="fas fa-user-plus"></i></button
+      <?php 
+        $q="SELECT * FROM `users` WHERE user_id <> '$user_id'";
+        $res=$conn->query($q);
+        if($res->num_rows>0){
+          while($row=$res->fetch_assoc()){
+            $name=$row['name'];
+            $id=$row['user_id'];
+            echo '<li>
+        <a>'.$name.'<button class="small_btn" onclick="validate(this,'.$id.')"><i class="fas fa-user-plus"></i></button
         ></a>
-      </li>
-      <li>
-        <a href="#"
-          >Agnes<button><i class="fas fa-user-plus"></i></button
-        ></a>
-      </li>
-
-      <li>
-        <a href="#"
-          >Billy <button><i class="fas fa-user-plus"></i></button
-        ></a>
-      </li>
-      <li>
-        <a href="#"
-          >Bob <button><i class="fas fa-user-plus"></i></button
-        ></a>
-      </li>
-
-      <li>
-        <a href="#"
-          >Calvin <button><i class="fas fa-user-plus"></i></button
-        ></a>
-      </li>
-      <li>
-        <a href="#"
-          >Christina <button><i class="fas fa-user-plus"></i></button
-        ></a>
-      </li>
-      <li>
-        <a href="#"
-          >Cindy <button><i class="fas fa-user-plus"></i></button
-        ></a>
-      </li>
+      </li>';
+          }
+        }
+      ?>
+      
+      
     </ul>
     <!-- <button class="btn modal">Show</button> -->
     <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary modalbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" style="margin-left:auto;margin-right:auto;display:block;" class="btn btn-primary modalbtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Create the group
 </button>
 
@@ -100,16 +131,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <!-- modal body -->
         <div class="container">
-      <!-- <h2 style="margin-bottom: 1rem">
-       <!-- title form -->
-      <!-- </h2>  -->
-      <form>
+      
+      <form method="POST">
+          <input type="hidden" name="ids" id="hidden_input">
         <div class="mb-3">
           <label for="grp_name" name="grp_name" class="form-label"
-            >Group name</label
-          >
+            >Group name</label>
           <input
             type="text"
             class="form-control"
@@ -121,18 +149,6 @@
           />
         </div>
 
-        <div class="mb-3">
-          <label for="owner" class="form-label">Owner</label>
-          <input
-            type="text"
-            class="form-control"
-            name="owner"
-            id="owner"
-            aria-describedby="owner"
-            placeholder="Enter your name"
-            required
-          />
-        </div>
 
         <div class="mb-3">
           <label for="category" class="form-label">Category</label>
@@ -159,47 +175,12 @@
           />
         </div>
 
-        <div class="mb-3">
-          <label for="split" class="form-label">Split %</label>
-          <input
-            type="number"
-            class="form-control"
-            id="split"
-            name="split"
-            aria-describedby="split"
-            placeholder="enter your split %"
-          />
-        </div>
-
-        <div class="mb-3">
-          <label for="date" class="form-label">Date</label>
-          <input
-            type="date"
-            class="form-control"
-            id="date"
-            name="date"
-            aria-describedby="date"
-            required
-          />
-        </div>
-
-        <!-- <div class="mb-3">
-          <label for="Select" class="form-label"> select menu</label>
-          <br />
-          <select id="Select" class="form-select">
-            <option>Food</option>
-            <option>Travel</option>
-          </select>
-        </div> -->
-
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <label for="split" class="form-label">**Split is calculated by taking the average</label>
+        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      
     </div>
   </div>
 </div>
