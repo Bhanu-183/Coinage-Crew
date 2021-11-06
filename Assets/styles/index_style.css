@@ -1,0 +1,56 @@
+*
+{
+    box-sizing: border-box;
+    font-family:'Raleway', sans-serif;
+    color:var(--black);
+}
+
+:root
+{
+    --green:#1e5128;
+    --black:#191A19;
+}
+
+form
+{
+    border:2px grey solid;
+    padding:2rem;
+    border-radius:1rem;
+    margin-right: 0.5rem;
+}
+.submit_btn
+{
+    background-color:var(--green);
+    color:white;
+    font-weight:bold;
+    font-size:1.4rem;
+    padding:0.7rem 2.5rem 0.7rem 2.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.submit_btn:hover
+{
+    color:white;
+    transform: scale(1.08);
+    transition: all 0.5s;
+}
+
+label
+{
+    font-size:1.3rem;
+    font-weight:500;
+}
+
+
+@media only screen and (max-width:768px) {
+    form
+    {
+        margin:0;
+    }
+    .row
+    {
+        padding:0.3rem;
+    }
+}

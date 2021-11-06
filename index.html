@@ -24,6 +24,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
+    <link rel="stylesheet" href="./Assets/styles/index_style.css">
     <title>Coinage Crew | Sign In</title>
 </head>
 
@@ -31,9 +32,25 @@
     <div class="contaier">
         <div class="row">
             <div class="col-md-6">
-
+                <img src="./Assets/images/login.svg" class="img-fluid" alt="" srcset="">
             </div>
-            <div class="col-md-6"></div>
+            <div class="col-md-6 mt-5">
+                <h1 class="display-3 text-center mt-4">Sign In</h1>
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                            placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password"
+                            placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn mt-4 submit_btn btn-lg">Sign In</button>
+                </form>
+                <p class="text-center" style="font-weight:bold">New User? <a href="sign_up.html">Sign Up</a></p>
+            </div>
         </div>
     </div>
 </body>
