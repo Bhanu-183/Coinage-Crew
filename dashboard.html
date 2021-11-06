@@ -25,33 +25,40 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <link rel="stylesheet" href="./Assets/styles/index_style.css">
-    <title>Coinage Crew | Sign In</title>
+    <link rel="stylesheet" href="./Assets/styles/dashboard_style.css">
+    <title>Coinage Crew | Dashboard</title>
 </head>
 
 <body>
-    <div class="contaier">
-        <div class="row">
-            <div class="col-md-6">
-                <img src="./Assets/images/login.svg" class="img-fluid" alt="" srcset="">
+    <div class="container mt-4">
+        <h1 class="display-3 text-center">Dashboard</h1>
+        <p class="text-center">Access all your groups from here</p>
+    </div>
+    <div class="row mt-4">
+        <a href="#" class="card p-2">
+            <div class="card-body">
+                <h2 class="card-title">Amigoss</h2>
+                <h5 class="card-subtitle mb-2 text-muted">Food Bill Split</h5>
+                <p class="card-text">Bhanu created this group</p>
             </div>
-            <div class="col-md-6 mt-5 p-4">
-                <h1 class="display-3 text-center mt-4">Sign In</h1>
-                <form method="POST">
-                    <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
-                            placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password"
-                            placeholder="Password">
-                    </div>
-                    <button type="submit" class="btn mt-4 submit_btn btn-lg">Sign In</button>
-                </form>
-                <p class="text-center" style="font-weight:bold">New User? <a href="sign_up.html">Sign Up</a></p>
+        </a>
+    </div>
+
+    <div class="row mt-4">
+        <a href="#" class="card p-2">
+            <div class="card-body">
+                <h2 class="card-title">Gryffindor</h2>
+                <h5 class="card-subtitle mb-2 text-muted">Travel Bill Split</h5>
+                <p class="card-text">Harry created this group</p>
             </div>
-        </div>
+        </a>
+    </div>
+
+
+    <div class="add">
+        <a href="http:#" class="btn add_btn p-4">
+            <i class="fa fa-plus"></i>
+        </a>
     </div>
 </body>
 

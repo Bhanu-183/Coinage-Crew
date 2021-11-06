@@ -1,0 +1,43 @@
+.display-3,h2
+{
+    color:var(--green);
+    font-weight:500;
+}
+
+.card
+{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width:20rem;
+    border:1px solid grey;
+}
+
+.card:hover
+{
+    text-decoration:none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: all 0.5s;
+    border:none;
+}
+
+.add
+{
+    position:fixed;
+    right:1rem;
+    bottom:1.5rem;
+}
+
+.add_btn
+{
+    background-color:var(--green);
+    color:white;
+    font-size:large;
+    border-radius:50%;
+box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;}
+
+i
+{
+    color:white;
+    font-size:1.3rem;
+}
