@@ -62,8 +62,12 @@ label
     {
         margin:0;
     }
-    .row
+    /* .row
     {
         padding:0.3rem;
+    } */
+
+    img {
+        display:none;
     }
 }
