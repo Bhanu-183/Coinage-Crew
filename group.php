@@ -1,3 +1,8 @@
+<?php 
+    $id=$_GET['grp_id'];
+    echo "<script>console.log('$id');</script>";
+
+?>
 <html lang="en">
 
 <head>

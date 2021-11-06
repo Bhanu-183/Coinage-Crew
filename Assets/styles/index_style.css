@@ -66,6 +66,16 @@ label
     color:var(--green);
 }
 
+.logout-btn
+{
+    background-color:var(--green);
+    color:white;
+    float:right;
+}
+.logout-btn:hover
+{
+    color:var(--white);
+}
 
 @media only screen and (max-width:768px) {
     form

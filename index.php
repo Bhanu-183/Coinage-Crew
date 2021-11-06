@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     include('./db_conn.php'); 
 
     if(isset($_POST['submit']))
@@ -14,7 +15,7 @@
             {
                 if(password_verify($pass,$row['password']))
                 {
-                    $_SESSION['user_id']=$row['id'];
+                    $_SESSION['user_id']=$row['user_id'];
                     header("location:dashboard.php");
                 }
                 else

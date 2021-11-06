@@ -4,6 +4,10 @@
     font-weight:500;
 }
 
+.heading
+{
+    margin-left: 4.5rem;
+}
 h1
 {
     font-size:3.5rem;
@@ -13,7 +17,7 @@ h1
     margin-left: auto;
     margin-right: auto;
     display: block;
-    width:20rem;
+    width:23rem;
     border:1px solid grey;
 }
 
@@ -47,7 +51,10 @@ i
     font-size:1.3rem;
 }
 @media only screen and (max-width:768px) {
-    
+    .heading
+    {
+        margin-left: 0;
+    }
     h1
     {
         font-size:3rem;
