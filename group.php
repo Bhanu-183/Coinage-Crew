@@ -105,7 +105,7 @@
                         }
                         elseif($user_id==$owner_id)
                         {
-                            echo '<a href="#" style="color:white" class="badge badge-warning badge-pill">Remind</a>
+                            echo '<a href="./phpmailer.php?id=."$id"." style="color:white" class="badge badge-warning badge-pill">Remind</a>
                                 </li>';
                         }
                         elseif($id==$user_id)
