@@ -81,7 +81,9 @@
                 <?php echo $owner?>
                 <?php if($user_id!=$owner_id)
                         {?>
-                <a href="#" class="badge badge-primary badge-pill">IOU</a>
+                <a href="./phpmailer.php?owner_id=<?php
+                echo $owner_id;
+                ?>" class="badge badge-primary badge-pill">IOU</a>
                 <?php }?>
             </li>
             <?php 
