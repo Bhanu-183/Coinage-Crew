@@ -35,7 +35,9 @@
             $conn->query($sql);
             echo $conn->error;
         }
-
+        ?>
+        <script>location.replace('../dashboard.php');</script>
+      <?php
       }
 ?>
 <!DOCTYPE html>
@@ -77,12 +79,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700;800;900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./style.css" />
-
+      <link rel="stylesheet" href="../Assets/styles/index_style.css">
     <script type="text/javascript" src="./script.js"></script>
   </head>
   <body>
       <div class="container mt-5">
-           
+        <div>
+            <a href="../logout.php" class="logout-btn btn">Logout</a>
+        </div>
+    <div>
+        <a href="../dashboard.php" class="back-btn btn">Back</a>
+    </div>
       <h1 class="display-5 text-center" style="color:#1e5128;font-weight:500">CREATE YOUR GROUP</h1>
       
         <ul class="list-group" id="selected">

@@ -40,7 +40,7 @@
         <div>
             <a href="./logout.php" class="logout-btn btn">Logout</a>
         </div>
-        <h1 class="text-center heading"><u>Dashboard</u></h1>
+        <h1 class="text-center heading"><u>Coinage Crew</u></h1>
         <p class="text-center">Access all your groups from here</p>
     </div>
 
