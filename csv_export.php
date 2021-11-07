@@ -1,8 +1,8 @@
 <?php 
  
 include('db_conn.php'); 
- 
-$query = $conn->query("SELECT * FROM `members`"); 
+$grp_id=$_GET['grp_id'];
+$query = $conn->query("SELECT * FROM `members`,`users` WHERE grp='$grp_id' AND user_id=id"); 
  
 if($query->num_rows > 0){ 
     $delimiter = ","; 
@@ -11,13 +11,15 @@ if($query->num_rows > 0){
     // Create a file pointer 
     $f = fopen('php://memory', 'w'); 
       
-    $fields = array('SNO', 'Group _ID', 'USER ID','STATUS'); 
+    $fields = array('Group Name','NAME','Group _ID','STATUS'); 
     fputcsv($f, $fields, $delimiter); 
-     
+     $res2=$conn->query("SELECT * FROM `groups` WHERE grp_id='$grp_id'");
+     $row2=$res2->fetch_assoc();
+     $grp_name=$row2['grp_name'];
     // Output each row of the data, format line as csv and write to file pointer 
     while($row = $query->fetch_assoc()){ 
         $status = ($row['paid'] == 1)?'Paid':'Unpaid'; 
-        $lineData = array($row['sno'], $row['grp'], $row['id'], $status); 
+        $lineData = array($grp_name,$row['name'], $row['grp'], $status); 
         fputcsv($f, $lineData, $delimiter); 
     } 
      
