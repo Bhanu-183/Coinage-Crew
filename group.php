@@ -56,6 +56,7 @@
     <h1 class="display-4 text-center" data-aos="fade-up"><u><?php echo $grp_name?></u></h1>
     <p class="text-center"><?php echo $owner?> created this group</p>
     <div class="row mt-4 table_row">
+        <a class="btn download_btn text-center mb-4 mt-1" href="./csv_export.php?grp_id=<?php echo $grp_id?>">Dowload Data</a>
         <table class="table">
             <tbody>
                 <tr>

@@ -24,3 +24,17 @@ b
 {
     color: white;
 }
+
+.download_btn
+{
+    margin-left:auto;
+    margin-right:auto;
+    display: block;
+    background-color:var(--green);
+    color:white;
+    width:10rem;
+}
+.download_btn:hover
+{
+    color: white;
+}
