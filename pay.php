@@ -1,14 +1,12 @@
 <?php
 
 $amount=$_GET['split'];
-
+$grp_id=$_GET['grp_id'];
 ?>
 
 
 <!-- <button id="rzp-button1">Pay</button> -->
-<form>
-
-
+<form action="./sucess.php?grp_id=<?php echo $grp_id?>" method="POST">
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>
     var options = {
@@ -17,13 +15,8 @@ $amount=$_GET['split'];
         "currency": "INR",
         "name": "Coinage Crew",
         "description": "Pay your part",
-        // "image": "https://example.com/your_logo",
-        // "order_id": "order_Ef80WJDPBmAeNt", //Pass the `id` obtained in the previous step
-        // "account_id": "acc_Ef7ArAsdU5t0XL",
+        
         "handler": function (response){
-            // alert(response.razorpay_payment_id);
-            // alert(response.razorpay_order_id);
-            // alert(response.razorpay_signature)
             console.log(response);
         }
     };
@@ -33,5 +26,5 @@ $amount=$_GET['split'];
         // e.preventDefault();
     // }
     </script>
-
+<input type="hidden" name="grp_id" value="<?php echo $grp_id?>">
 </form>
