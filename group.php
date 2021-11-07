@@ -44,7 +44,7 @@
     </div>
     <?php 
         $q="SELECT * FROM `groups`,`users` WHERE `grp_id`='$grp_id' AND user_id=owner";
-        $res=$conn->query($q);
+        $res=$conn->query($q);  
         $row=$res->fetch_assoc();
         $grp_name=$row['grp_name'];
         $owner=$row['name'];
