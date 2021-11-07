@@ -110,7 +110,7 @@
                         }
                         elseif($id==$user_id)
                         {
-                            echo '<a href="#" class="btn pay_btn">PAY</a>
+                            echo '<a href="./pay.php?split='.$split.'" class="btn pay_btn">PAY</a>
                             </li>';
                         }
                     }
