@@ -1,4 +1,13 @@
 <?php
+
+    session_start();
+    include('./db_conn.php'); 
+    $user_id=$_SESSION['user_id'];
+
+    $owner_id =$_GET['owner_id'];
+    $q1 = "SELECT email FROM `users` WHERE id = '$user_id' ";
+    
+
 use PHPMailer\PHPMailer\PHPMailer;
 
 // if(isset($_POST['name']) && isset($_POST['email'])){
@@ -17,8 +26,8 @@ use PHPMailer\PHPMailer\PHPMailer;
     $mail->isSMTP();
     $mail->Host = "smtp.gmail.com";
     $mail->SMTPAuth = true;
-    $mail->Username = "lifelineiiitkorg@gmail.com";
-    $mail->Password = 'lifeline@iiitk';
+    $mail->Username = "coinagecrewgmail.com";
+    $mail->Password = 'coinagecrew12345';
     $mail->Port = 465;
     $mail->SMTPSecure = "ssl";
 
